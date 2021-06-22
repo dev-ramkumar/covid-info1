@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import countries from './countries';
 import Table from './components/table';
-import Chart from './components/table';
+//import Chart from './components/table';
 import './App.css';
 
 class App extends Component {

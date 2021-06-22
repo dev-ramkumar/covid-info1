@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 
 class Table extends Component {
     state = { 
@@ -15,7 +15,7 @@ class Table extends Component {
         var self = this
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState === 4 && this.status === 200) {
                 var data=JSON.parse(this.responseText).Countries
                 console.log(data)
                 self.setState({tableData:data})
@@ -101,6 +101,7 @@ class Table extends Component {
                         if(d.Country.toLowerCase().includes(filterValue.toLowerCase())){
                             return d;
                         }
+                        return null;
                     }).map((d,index)=>{
                         return (
                         <tr key={index}>
