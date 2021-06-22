@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import countries from './countries';
 import Table from './components/table';
-//import Chart from './components/table';
+import Charts from './components/chart';
 import './App.css';
 
 class App extends Component {
   state = { 
     table:[],
-    country:"india"
+    country:"india",
+    pieCountry:"",
+    pieConfirmed:0,
+    pieRecovered:0,
+    pieDeath:0
    }
 
    searchHandle=(e)=>{
@@ -17,10 +21,16 @@ class App extends Component {
         break
       }
   }
-     
-     
    }
 
+   pieChartHandle=(country, confirmed, recovered, death)=>{
+     this.setState({
+       pieCountry:country,
+       pieConfirmed:confirmed,
+       pieRecovered:recovered,
+       pieDeath:death
+     })
+   }
 
   componentDidMount=()=>{
    
@@ -43,10 +53,12 @@ class App extends Component {
 
         <div className="chart">
 
+          <Charts country={this.state.pieCountry} confirmed={this.state.pieConfirmed} recovered={this.state.pieRecovered} death={this.state.pieDeath}/>
+
         </div>
 
         <div className="table">
-          <Table data={this.state.country} />
+          <Table data={this.state.country} pieChart={this.pieChartHandle}/>
         </div>
       </div>
      );

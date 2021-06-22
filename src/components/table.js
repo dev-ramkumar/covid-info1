@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import charts from './chart.js';
 
 
 class Table extends Component {
@@ -17,7 +18,7 @@ class Table extends Component {
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 var data=JSON.parse(this.responseText).Countries
-                console.log(data)
+                console.log(data);
                 self.setState({tableData:data})
             }
         };
@@ -31,6 +32,10 @@ class Table extends Component {
 
     filterHandle=(e)=>{
         this.setState({filterValue:e.target.value})
+    }
+
+    countryClickHandle=(country, con, rec, dea)=>{
+        this.props.pieChart(country, con, rec, dea);
     }
 
    
@@ -104,7 +109,9 @@ class Table extends Component {
                         return null;
                     }).map((d,index)=>{
                         return (
-                        <tr key={index}>
+                        <tr key={index} onClick={()=>{
+                            this.countryClickHandle(d.Country, d.TotalConfirmed, d.TotalRecovered,  d.TotalDeaths)
+                        }}>
                             <td>{index+1}</td>
                             <td>{d.Country}</td>
                             <td>{newData ? d.NewConfirmed : d.TotalConfirmed}</td>
