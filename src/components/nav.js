@@ -19,19 +19,19 @@ class Nav extends Component {
     render() { 
         return ( 
             <div className="top">
-         <b>Covid19 Info</b> 
-         <div className="input">
-        <input id="in-country" list="countries" placeholder="Country" />
-        <button onClick={this.searchHandle}>Search</button>
-        </div>
-        <datalist id="countries">
-          {countries.map((val,index) => {
-            return (
-              <option key={index} value={val.Slug}>{val.Country}</option>
-            );
-          })}
-        </datalist>  
-        </div>
+              <b>Covid19 Info</b> 
+                <div className="input">
+                  <input id="in-country" list="countries" placeholder="Country" />
+                  <button onClick={this.searchHandle}>Search</button>
+                </div>
+                <datalist id="countries">
+                  {countries.map((val,index) => {
+                    return (
+                      <option key={index} value={val.Slug}>{val.Country}</option>
+                    );
+                  })}
+                </datalist>  
+            </div>
          );
     }
 }

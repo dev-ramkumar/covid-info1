@@ -44,7 +44,7 @@ class LineChart extends Component {
                     options={{
                         title:{
                         display:true,
-                        text:'Average Rainfall per month',
+                        text:'Corona cases',
                         fontSize:20
                         },
                         legend:{

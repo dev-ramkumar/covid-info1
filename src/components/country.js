@@ -94,7 +94,6 @@ class Country extends Component {
             }
         };
         xhttp.open("GET", "https://api.covid19api.com/total/dayone/country/"+country, true);
-   //     xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
         xhttp.send();
         }
 
