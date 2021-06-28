@@ -1,5 +1,10 @@
 [
     {
+        "Country": "GLOBAL",
+        "Slug": "GLOBAL",
+        "ISO2": "GLOBAL"
+    },
+    {
         "Country": "Kuwait",
         "Slug": "kuwait",
         "ISO2": "KW"

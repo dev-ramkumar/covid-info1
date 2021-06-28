@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MaterialTable from 'material-table';
-import './gtable.css';
+import './table.css';
 import Summary from './summary';
 
 
@@ -82,7 +82,7 @@ class Table extends Component {
               this.state.tableData.Countries
           }
           onRowClick={(evt,rowData)=>{
-              window.open("country/"+rowData.Slug,"_parent");
+              this.props.changeCountry(rowData.Slug);
             }}
            
           options={{

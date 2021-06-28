@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Table from './components/table';
 import Nav from './components/nav';
 //import Summary from './components/summary';
+import countries from './countries';
 import Country from './components/country';
 import './App.css';
 import Subscribe  from './components/subscribe';
@@ -27,8 +28,16 @@ class App extends Component {
     }
    }
 
-  componentDidMount=()=>{
-   
+ 
+  changeCountry=(country)=>{
+
+    for (var i=0; i < countries.length; i++) {
+      if (countries[i].Slug === country) {
+         this.setState({country})
+        break
+      }
+     }
+
   }
 
   render() { 
@@ -37,21 +46,10 @@ class App extends Component {
 
 
 
-        <Nav />
+        <Nav changeCountry={this.changeCountry}/>
 
        
-
-
-        <Router>
-          <Switch>
-          <Route path="/" component={()=>{
-            return (<div className="table">
-              <Table summary={this.summaryHandle}/>
-            </div>)
-          }} exact/>
-          <Route path="/country" component={Country} />
-          </Switch>
-        </Router>
+        {this.state.country==="GLOBAL" ? <Table changeCountry={this.changeCountry}/>: <Country country={this.state.country} />}
         
         
 

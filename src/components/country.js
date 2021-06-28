@@ -29,10 +29,18 @@ class Country extends Component {
      }
 
      componentDidMount=()=>{
-
-        var country=window.location.href
-        country=country.split('/')
-        country=country[country.length-1] || "india"
+         this.countryHandle(this.props.country)
+     }
+     componentDidUpdate=()=>{
+         if(this.state.country!==this.props.country){
+             this.countryHandle(this.props.country)
+             this.setState({country:this.props.country})
+         }
+     }
+    
+     countryHandle=(count)=>{
+        var country = count || "india"
+        console.log(this.props.country)
         this.setState({country})
        
         var self = this
