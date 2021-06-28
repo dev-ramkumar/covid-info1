@@ -1,0 +1,22 @@
+.top {
+    width: 100%;
+    background: black;
+    color:white;
+    padding: 10px;
+    text-align: left;
+ /*
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+ */   
+  }
+  .top .input {
+    float: right;
+    margin-right: 50px;
+  }
+  #countries {
+   height:5.1em;
+   overflow:hidden
+  }
+  
+  

@@ -1,0 +1,80 @@
+
+
+.summary span {
+    display: inline-block;
+    width:15%;
+    margin: 20px 10px;
+   padding: 20px 0px;
+    border-radius: 5px;
+    box-shadow:0  5px 10px rgba(177, 190, 241, 0.05), 0 15px 40px rgba(167, 182, 241, 0.2);
+}
+
+.summary .card1 {
+    background-image: linear-gradient(to bottom right, rgb(233, 48, 240), rgb(244, 244, 248));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+  }
+  .summary .card2 {
+    background-image: linear-gradient(to bottom right, rgb(19, 243, 56), rgb(244, 244, 248));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+  }
+  .summary .card3 {
+    background-image: linear-gradient(to bottom right, rgb(219, 63, 35), rgb(244, 244, 248));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+  }
+  .summary .card4 {
+    background-image: linear-gradient(to bottom right, rgb(20, 157, 211), rgb(244, 244, 248));
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+  }
+  .card b {
+    color: blue;
+  }
+  .card text {
+    width: 100%;
+    
+  }
+  
+.summary .card:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+ .feedback-root {
+   background: burlywood;
+   width: 25%;
+   display: block;
+   padding: 10px;
+ } 
+ #feedback-box {
+   width: 80%;
+   display: block;
+   margin: 0px;
+   margin: auto;
+  padding: 10px 5px;
+  border: none;
+  border-radius: 5px;
+
+ }
+
+ .feedback-root button {
+   width: 80%;
+   padding: 5px;
+   color: white;
+   background:green;
+   margin: 10px 0px;
+   border: none;
+   border-radius: 5px;   
+ }
+
+
+
+
+
+
+
+

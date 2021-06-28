@@ -1,0 +1,10 @@
+h3 {
+    padding: 0px;
+    margin: 10px 50px;
+    text-align: left;
+    padding-left: 30px;
+    background-image: url('https://uc-emoji.azureedge.net/orig/c8/fe79adcb9f556cb15553d521c419ae.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-transform: capitalize;
+}

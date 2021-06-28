@@ -1,0 +1,31 @@
+.MuiTableRow-hover:hover { 
+    background: #5f76fc !important;
+    color:white;
+    
+}
+.gtable {
+    width: 80% !important;
+    margin: auto;
+}
+.MuiTableCell-head {
+    color: white !important;
+    padding: 10px !important;
+    
+
+}
+.MuiTableCell-head:hover {
+    color: rgb(253, 245, 245) !important;
+    background: rgb(97, 99, 224) !important;
+   
+}
+.MuiButtonBase-root:hover {
+    color: rgb(253, 245, 245) !important;
+    background: rgb(97, 99, 224) !important;
+    
+}
+.MuiToolBar-root {
+    background: rgb(243, 167, 106) !important;
+}
+
+
+  

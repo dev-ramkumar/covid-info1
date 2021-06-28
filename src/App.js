@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
-import countries from './countries';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Table from './components/table';
-import Charts from './components/chart';
+import Nav from './components/nav';
+//import Summary from './components/summary';
+import Country from './components/country';
 import './App.css';
+import Subscribe  from './components/subscribe';
 
 class App extends Component {
   state = { 
     table:[],
     country:"india",
-    pieCountry:"",
-    pieConfirmed:0,
-    pieRecovered:0,
-    pieDeath:0
+    sTotal:0,
+    sRecovered:0,
+    sDeaths:0
    }
 
-   searchHandle=(e)=>{
-    for (var i=0; i < countries.length; i++) {
-      if (countries[i].Slug === e.target.value) {
-        this.setState({country:e.target.value})
-        break
-      }
-  }
-   }
-
-   pieChartHandle=(country, confirmed, recovered, death)=>{
-     this.setState({
-       pieCountry:country,
-       pieConfirmed:confirmed,
-       pieRecovered:recovered,
-       pieDeath:death
-     })
+  
+   summaryHandle=(total, recovered, deaths)=>{
+    if(this.state.sTotal!==total && this.state.sRecovered!==recovered && this.state.sDeaths!==deaths) {
+        this.setState({
+          sTotal: total,
+          sRecovered:recovered,
+          sDeaths:deaths
+        })
+    }
    }
 
   componentDidMount=()=>{
@@ -39,27 +34,31 @@ class App extends Component {
   render() { 
     return ( 
       <div className="App">
-        <div className="top">
-        <input list="countries" placeholder="Country" onChange={this.searchHandle}/>
-        <datalist id="countries">
-          {countries.map((val,index) => {
-            return (
-              <option key={index} value={val.Slug}>{val.Country}</option>
-            );
-          })}
-        </datalist>  
 
-        </div>
 
-        <div className="chart">
 
-          <Charts country={this.state.pieCountry} confirmed={this.state.pieConfirmed} recovered={this.state.pieRecovered} death={this.state.pieDeath}/>
+        <Nav />
 
-        </div>
+       
 
-        <div className="table">
-          <Table data={this.state.country} pieChart={this.pieChartHandle}/>
-        </div>
+
+        <Router>
+          <Switch>
+          <Route path="/" component={()=>{
+            return (<div className="table">
+              <Table summary={this.summaryHandle}/>
+            </div>)
+          }} exact/>
+          <Route path="/country" component={Country} />
+          </Switch>
+        </Router>
+        
+        
+
+
+        
+
+        <Subscribe />
       </div>
      );
   }
