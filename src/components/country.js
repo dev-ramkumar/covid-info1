@@ -34,22 +34,25 @@ class Country extends Component {
      componentDidUpdate=()=>{
          if(this.state.country!==this.props.country){
              this.countryHandle(this.props.country)
-             this.setState({country:this.props.country})
          }
      }
-    
+     
      countryHandle=(count)=>{
-        var country = count || "india"
-        console.log(this.props.country)
-        this.setState({country})
-       
-        var self = this
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                var data=JSON.parse(this.responseText)
-                self.setState({allData:data})
-              //  console.log(data)
+        var xhttp = []
+        var country = count;
+        var self = this;
+        xhttp[country]=undefined;
+        xhttp[country] = new XMLHttpRequest();
+        xhttp[country].onreadystatechange = function() {
+            if (xhttp[country].readyState === 4 && xhttp[country].status === 200) {
+
+                self.setState({country:self.props.country})
+                var data=JSON.parse(xhttp[country].responseText)
+                console.log(xhttp[country].responseText)
+                if(!data){
+                    self.countryHandle(country)
+                }
+                self.setState({allData:data});
                 var confirmedx = { labels:[], data:[] }
                 var recoveredx = { labels:[], data:[] }
                 var deathsx = { labels:[], data:[] }
@@ -81,20 +84,21 @@ class Country extends Component {
                     deaths:deathsx,
                     active:activex
                 })
-
+               
                 var summary = data[data.length-1];
-                
-                self.setState({
-                    stotal:summary.Confirmed,
-                    srecovered: summary.Recovered,
-                    sdeaths: summary.Deaths
-                })
+                if(summary) {
+                    self.setState({
+                        stotal:summary.Confirmed,
+                        srecovered: summary.Recovered,
+                        sdeaths: summary.Deaths
+                    })
+                }
 
               
             }
         };
-        xhttp.open("GET", "https://api.covid19api.com/total/dayone/country/"+country, true);
-        xhttp.send();
+        xhttp[country].open("GET", "https://api.covid19api.com/total/dayone/country/"+country, true);
+        xhttp[country].send(null);
         }
 
         render() { 
