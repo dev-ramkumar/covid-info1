@@ -38,20 +38,17 @@ class Country extends Component {
      }
      
      countryHandle=(count)=>{
-        var xhttp = []
+        
         var country = count;
         var self = this;
-        xhttp[country]=undefined;
-        xhttp[country] = new XMLHttpRequest();
-        xhttp[country].onreadystatechange = function() {
-            if (xhttp[country].readyState === 4 && xhttp[country].status === 200) {
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState === 4 && xhttp.status === 200) {
 
                 self.setState({country:self.props.country})
-                var data=JSON.parse(xhttp[country].responseText)
-                console.log(xhttp[country].responseText)
-                if(!data){
-                    self.countryHandle(country)
-                }
+                var data=JSON.parse(xhttp.responseText)
+               
                 self.setState({allData:data});
                 var confirmedx = { labels:[], data:[] }
                 var recoveredx = { labels:[], data:[] }
@@ -60,21 +57,22 @@ class Country extends Component {
 
 
                 data.forEach((value, index)=> {
+                    console.log(JSON.parse(value))
+                   value=JSON.parse(value)
                    
-                    if(index % 30 === 0) {
-                        let date = value.Date.split('T')[0]
+                        let date = value.date
                         confirmedx.labels.push(date)
-                        confirmedx.data.push(value.Confirmed)
+                        confirmedx.data.push(value.total)
 
                         recoveredx.labels.push(date)
-                        recoveredx.data.push(value.Recovered)
+                        recoveredx.data.push(value.recovered)
 
                         deathsx.labels.push(date)
-                        deathsx.data.push(value.Deaths)
+                        deathsx.data.push(value.deaths)
 
                         activex.labels.push(date)
-                        activex.data.push(value.Confirmed - (value.Recovered + value.Deaths))
-                    }
+                        activex.data.push(value.active)
+
                 
                 });
 
@@ -85,20 +83,21 @@ class Country extends Component {
                     active:activex
                 })
                
-                var summary = data[data.length-1];
+                var summary = JSON.parse(data[data.length-1]);
+                
                 if(summary) {
                     self.setState({
-                        stotal:summary.Confirmed,
-                        srecovered: summary.Recovered,
-                        sdeaths: summary.Deaths
+                        stotal:summary.total,
+                        srecovered: summary.recovered,
+                        sdeaths: summary.deaths
                     })
                 }
 
               
             }
         };
-        xhttp[country].open("GET", "https://api.covid19api.com/total/dayone/country/"+country, true);
-        xhttp[country].send(null);
+        xhttp.open("GET", "https://ramkumarg1605.000webhostapp.com/telliant/api/covidapi1.php?country="+country, true);
+        xhttp.send(null);
         }
 
         render() { 

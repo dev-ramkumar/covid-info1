@@ -10,6 +10,7 @@ class Table extends Component {
         total:0,
         recovered:0,
         deaths:0,
+        active:0,
        
         tableData:[],
    
@@ -28,16 +29,20 @@ class Table extends Component {
                         self.setState({tableData:data,
                         
                         })
+                        var data=data.data[0];
+                        
                         self.setState({
-                            total:data.Global.TotalConfirmed,
-                            recovered:data.Global.TotalRecovered,
-                            deaths:data.Global.TotalDeaths
+                            total:data['Total Cases'],
+                            recovered:data['Total Recovered'],
+                            deaths:data['Total Deaths'],
+                            active:data['Active Cases']
                         })
+                        
                         
                
                     }
                 };
-                xhttp.open("GET", "https://api.covid19api.com/summary", true);
+                xhttp.open("GET", "https://ramkumarg1605.000webhostapp.com/telliant/api/covidapi.php", true);
                 xhttp.send();
            
         }
@@ -52,7 +57,7 @@ class Table extends Component {
                     total={this.state.total} 
                     recovered={this.state.recovered} 
                     deaths={this.state.deaths} 
-                    active={this.state.total - (this.state.recovered + this.state.deaths)}
+                    active={this.state.active}
                 />
                 
             
@@ -64,15 +69,16 @@ class Table extends Component {
                         tableRef={this.tableRef}
                         columns={[
                             { title: "Country", field: "Country" },
-                            { title: "Total Confirmed", field: "TotalConfirmed" },
-                            { title: "Total Deaths", field: "TotalDeaths" },
-                            { title: "Total Recovered", field: "TotalRecovered" }
+                            { title: "Total Confirmed", field: "Total Cases" },
+                            { title: "Total Deaths", field: "Total Deaths" },
+                            { title: "Total Recovered", field: "Total Recovered" }
                         ]}
                         data={
-                            this.state.tableData.Countries
+                            this.state.tableData.data
                         }
                         onRowClick={(evt,rowData)=>{
-                            this.props.changeCountry(rowData.Slug);
+                           
+                            this.props.changeCountry(rowData.Country.toLowerCase());
                             }}
                         
                         options={{
