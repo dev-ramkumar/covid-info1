@@ -29,13 +29,13 @@ class Table extends Component {
                         self.setState({tableData:data,
                         
                         })
-                        var data=data.data[0];
+                        var sum=data.data[0];
                         
                         self.setState({
-                            total:data['Total Cases'],
-                            recovered:data['Total Recovered'],
-                            deaths:data['Total Deaths'],
-                            active:data['Active Cases']
+                            total:sum['Total Cases'],
+                            recovered:sum['Total Recovered'],
+                            deaths:sum['Total Deaths'],
+                            active:sum['Active Cases']
                         })
                         
                         
