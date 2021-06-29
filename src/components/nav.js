@@ -11,7 +11,7 @@ class Nav extends Component {
    searchHandle=()=>{
      var country = document.getElementById("in-country").value;
     for (var i=0; i < countries.length; i++) {
-      if (countries[i].Slug === country) {
+      if (countries[i] === country) {
        this.props.changeCountry(country)
         break
       }
@@ -20,7 +20,7 @@ class Nav extends Component {
 
    changeInputHandle=(e)=>{
     for (var i=0; i < countries.length; i++) {
-      if (countries[i].Slug === e.target.value) {
+      if (countries[i] === e.target.value) {
         this.setState({incheck:"#aaffaa"})
         break
       }
@@ -44,7 +44,7 @@ class Nav extends Component {
                 <datalist id="countries">
                   {countries.map((val,index) => {
                     return (
-                      <option key={index} value={val.Slug}>{val.Country}</option>
+                      <option key={index} value={val}>{val}</option>
                     );
                   })}
                 </datalist>  

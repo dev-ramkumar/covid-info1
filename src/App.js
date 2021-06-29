@@ -15,12 +15,15 @@ class App extends Component {
   changeCountry=(country)=>{
 
     for (var i=0; i < countries.length; i++) {
-      if (countries[i].Slug === country) {
+      if (countries[i] === country) {
          this.setState({country})
         break
       }
      }
 
+  }
+  componentDidMount=()=>{
+  
   }
 
   render() { 
