@@ -78,7 +78,7 @@ class Table extends Component {
                         }
                         onRowClick={(evt,rowData)=>{
                            
-                            this.props.changeCountry(rowData.Country);
+                            this.props.changeCountry(rowData.Country.toLowerCase());
                             }}
                         
                         options={{

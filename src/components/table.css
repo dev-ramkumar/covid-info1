@@ -13,6 +13,9 @@
     
 
 }
+.MuiTableCell-root {
+    padding-right: 100px;
+}
 .MuiTableCell-head:hover {
     color: rgb(253, 245, 245) !important;
     background: rgb(97, 99, 224) !important;

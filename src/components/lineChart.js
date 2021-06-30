@@ -27,11 +27,11 @@ class LineChart extends Component {
             datasets: [
               {
                 label: this.state.type,
-                fill: false,
-                lineTension: 0.5,
-                backgroundColor: 'rgba(75,192,192,1)',
-                borderColor: 'rgba(0,0,0,1)',
-                borderWidth: 2,
+                fill: true,
+                lineTension:0.5,
+                backgroundColor: 'rgba(0,200,200,0.5)',
+                borderColor: 'rgba(0,0,255,1)',
+                borderWidth: 1,
                 data: this.state.data
               }
             ]
@@ -42,15 +42,7 @@ class LineChart extends Component {
                     <Line
                     data={stat}
                     options={{
-                        title:{
-                        display:true,
-                        text:'Corona cases',
-                        fontSize:20
-                        },
-                        legend:{
-                        display:true,
-                        position:'right'
-                        }
+                        responsive:true
                     }}
                     />
             </div>

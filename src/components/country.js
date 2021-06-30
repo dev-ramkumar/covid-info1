@@ -5,7 +5,7 @@ import './country.css';
 
 class Country extends Component {
     state = { 
-        country:"",
+        country:"Loading...",
         allData:[],
         stotal:0,
         srecovered:0,
@@ -31,14 +31,17 @@ class Country extends Component {
      componentDidMount=()=>{
          this.countryHandle(this.props.country)
      }
-     componentDidUpdate=()=>{
-         if(this.state.country!==this.props.country){
-             this.countryHandle(this.props.country)
-         }
-     }
+     componentDidUpdate(prevProps){
+        if ( prevProps.country !== this.props.country ) {
+          this.countryHandle(this.props.country);
+        }
+      }
+    
+    
      
      countryHandle=(count)=>{
-        
+        this.setState({country:"Loading..."})
+        console.log(1)
         var country = count;
         var self = this;
         
@@ -96,7 +99,7 @@ class Country extends Component {
               
             }
         };
-        xhttp.open("GET", "https://ramkumarg1605.000webhostapp.com/telliant/api/covidapi1.php?country="+country, true);
+        xhttp.open("GET", "https://ramkumarg1605.000webhostapp.com/telliant/api/country-data.php?country="+country, true);
         xhttp.send(null);
         }
 
