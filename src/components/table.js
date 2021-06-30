@@ -78,7 +78,7 @@ class Table extends Component {
                         }
                         onRowClick={(evt,rowData)=>{
                            
-                            this.props.changeCountry(rowData.Country.toLowerCase());
+                            this.props.changeCountry(rowData.Country);
                             }}
                         
                         options={{
@@ -92,14 +92,14 @@ class Table extends Component {
                             },
                             
                             cellStyle: {
-                                textAlign: "right",
+                                textAlign: "center",
                                 padding: "7px",
                                 paddingRight:"80px"
                                 
                             },
                             rowStyle: {
                             backgroundColor: '#EEE',
-                            textAlign:"right"
+                            textAlign:"center"
                             }
                         }}
                         title="Covid Details : World"

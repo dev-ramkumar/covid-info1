@@ -16,6 +16,7 @@ class App extends Component {
 
     for (var i=0; i < countries.length; i++) {
       if (countries[i] === country) {
+        
          this.setState({country})
         break
       }
