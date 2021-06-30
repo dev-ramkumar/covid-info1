@@ -1,9 +1,10 @@
 .subscribe {
     width: 100%;
-    padding: 20px;
+    padding: 20px 0px;
     background-color: blueviolet;
     display: block; 
     margin-top: 50px;
+    border-radius: 10px 10px 0px 0px;
 
 }
 
@@ -22,5 +23,8 @@
     background-color: green;
     padding: 5px;
     border-radius: 0px 20px 20px 0px;
+    color: white;
+}
+footer {
     color: white;
 }

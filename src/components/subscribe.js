@@ -38,6 +38,8 @@ class Subscribe extends Component {
                 <center>
                 <input id="email" type="email" placeholder="example@domain.com"/>
                 <button onClick={this.subscribe}>Subscribe</button>
+                <br/><br/>
+                <footer>&copy; 2021 - {window.location.hostname}</footer>
                 </center>
             </div>
          );
