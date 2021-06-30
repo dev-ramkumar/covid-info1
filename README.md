@@ -3,7 +3,7 @@ React App for covid details
 [Click here to view demo](https://covid-19info1.netlify.app/)
 
 
-##Dependencies
+## Dependencies
 * Chart-Js
 ```javascript
 npm install --save react-chartjs-2 chart.js
