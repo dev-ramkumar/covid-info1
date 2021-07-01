@@ -9,6 +9,7 @@ class Admin extends Component {
         return ( 
             <div className="admin">
                 Admin Page
+                <Login/>
             </div>
          );
     }
