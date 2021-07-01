@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Admin from './components/admin/admin';
 import Table from './components/table';
 import Nav from './components/nav';
 import countries from './countries';
@@ -32,9 +34,15 @@ class App extends Component {
       <div className="App">
 
         <Nav changeCountry={this.changeCountry}/>
-    
-        {this.state.country==="GLOBAL" ? <Table changeCountry={this.changeCountry}/>: <Country country={this.state.country} />}
 
+        <BrowserRouter>
+        <Switch>
+        <Route path="/" component={()=>{
+          return this.state.country==="GLOBAL" ? <Table changeCountry={this.changeCountry}/>: <Country country={this.state.country} />
+        }} exact />
+        <Route path="/admin" component={Admin} />
+        </Switch>
+        </BrowserRouter>
         <Subscribe />
       </div>
      );
