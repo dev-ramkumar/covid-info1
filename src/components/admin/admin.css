@@ -1,0 +1,47 @@
+
+.login-root {
+   
+    width: 60%;
+    padding: 50px;
+    display: block;
+    margin: auto;
+    background-image: linear-gradient(to bottom right, rgb(255, 38, 0) , rgb(0, 47, 255));
+    margin-top: 50px;
+}
+.login-root h2 {
+    color:white;
+}
+.login-root #error-box {
+    color: yellow;
+    text-transform: capitalize;
+    padding: 0px 20px;
+}
+.login-root input {
+    padding:10px;
+    padding-left: 20px;
+    border: none;
+    margin: 10px;
+    width: 40%;
+    border-radius: 20px;
+
+}
+.login-root input:focus {
+    outline: none;
+}
+.login-root .login-in {
+    background: rgb(2, 78, 2);
+    color: white;
+    font-weight: bold;
+    cursor:pointer;
+}
+.login-root .login-in:hover {
+    background: rgb(4, 129, 4);
+}
+
+
+.subscribe-details, .feedback-details {
+    width: 80%;
+    margin: auto;
+    display: block;
+    margin-top: 50px;
+}
