@@ -45,3 +45,15 @@
     display: block;
     margin-top: 50px;
 }
+
+@media only screen and (max-width: 760px) {
+    .login-root input {
+        width: 80%;
+    }
+    .adduser-root input {
+        width: 80%;
+        margin: 5px;
+        font-size: 1em;
+        padding: 5px;
+    }
+}
