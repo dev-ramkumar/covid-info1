@@ -24,6 +24,7 @@ class LineChart extends Component {
     render() { 
         var stat = {
             labels: this.state.labels,
+           
             datasets: [
               {
                 label: this.state.type,
@@ -32,7 +33,8 @@ class LineChart extends Component {
                 backgroundColor: 'rgba(0,200,200,0.5)',
                 borderColor: 'rgba(0,0,255,1)',
                 borderWidth: 1,
-                data: this.state.data
+                data: this.state.data,
+                color:'#ff0000'
               }
             ]
           }

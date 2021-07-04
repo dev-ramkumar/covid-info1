@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import LineChart from './lineChart';
 import Summary from './summary';
 import './country.css';
+import Loading from './Loading';
 
 class Country extends Component {
     state = { 
         country:"Loading...",
+        loading:true,
         allData:[],
         stotal:0,
         srecovered:0,
@@ -41,6 +43,7 @@ class Country extends Component {
      
      countryHandle=(count)=>{
         this.setState({country:"Loading..."})
+        this.setState({loading:true})
         console.log(1)
         var country = count;
         var self = this;
@@ -51,6 +54,7 @@ class Country extends Component {
 
                 self.setState({country:self.props.country})
                 var data=JSON.parse(xhttp.responseText)
+                self.setState({loading:false})
                
                 self.setState({allData:data});
                 var confirmedx = { labels:[], data:[] }
@@ -104,6 +108,10 @@ class Country extends Component {
         }
 
         render() { 
+            if(this.state.loading) {
+                return <Loading/>
+            } else {
+
             return ( 
                 <div className="country">
 
@@ -139,6 +147,7 @@ class Country extends Component {
                     
                 </div>
             );
+            }
         }
 }
  

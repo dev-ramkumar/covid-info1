@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MaterialTable from 'material-table';
 import './table.css';
 import Summary from './summary';
+import Loading from './Loading';
 
 
 class Table extends Component {
@@ -13,12 +14,14 @@ class Table extends Component {
         active:0,
        
         tableData:[],
+        loading:true
    
      }
 
     
 
     componentDidMount=()=>{
+        this.setState({loading:true})
       
         var self = this
              
@@ -26,7 +29,9 @@ class Table extends Component {
                 xhttp.onreadystatechange = function() {
                     if (this.readyState === 4 && this.status === 200) {
                         var data=JSON.parse(this.responseText)
-                        self.setState({tableData:data,
+                        self.setState({
+                            tableData:data,
+                            loading:false
                         
                         })
                         var sum=data.data[0];
@@ -49,67 +54,70 @@ class Table extends Component {
    
     render() { 
 
-       
-        return ( 
-            <div>
+       if(this.state.loading){
+           return <Loading/>
+       } else {
+            return ( 
+                <div>
 
-                <Summary 
-                    total={this.state.total} 
-                    recovered={this.state.recovered} 
-                    deaths={this.state.deaths} 
-                    active={this.state.active}
-                />
+                    <Summary 
+                        total={this.state.total} 
+                        recovered={this.state.recovered} 
+                        deaths={this.state.deaths} 
+                        active={this.state.active}
+                    />
+                    
                 
-            
-            
-                <div className="gtable">
                 
+                    <div className="gtable">
+                    
 
-                        <MaterialTable
-                        tableRef={this.tableRef}
-                        columns={[
-                            { title: "Country", field: "Country" },
-                            { title: "Total Confirmed", field: "Total Cases" },
-                            { title: "Total Deaths", field: "Total Deaths" },
-                            { title: "Total Recovered", field: "Total Recovered" }
-                        ]}
-                        data={
-                            this.state.tableData.data
-                        }
-                        onRowClick={(evt,rowData)=>{
-                           
-                            this.props.changeCountry(rowData.Country);
-                            }}
-                        
-                        options={{
-                            sorting: true,
-                            exportButton: true,
-                            headerStyle: {
-                                backgroundColor: '#01579b',
-                                color: '#FFF',
-                                fontWeight: 'bold'
-                                
-                            },
-                            
-                            cellStyle: {
-                                textAlign: "center",
-                                padding: "7px",
-                                paddingRight:"80px"
-                                
-                            },
-                            rowStyle: {
-                            backgroundColor: '#EEE',
-                            textAlign:"center"
+                            <MaterialTable
+                            tableRef={this.tableRef}
+                            columns={[
+                                { title: "Country", field: "Country" },
+                                { title: "Total Confirmed", field: "Total Cases" },
+                                { title: "Total Deaths", field: "Total Deaths" },
+                                { title: "Total Recovered", field: "Total Recovered" }
+                            ]}
+                            data={
+                                this.state.tableData.data
                             }
-                        }}
-                        title="Covid Details : World"
-                        />
-                        
+                            onRowClick={(evt,rowData)=>{
                             
-                    </div>
+                                this.props.changeCountry(rowData.Country);
+                                }}
+                            
+                            options={{
+                                sorting: true,
+                                exportButton: true,
+                                headerStyle: {
+                                    backgroundColor: '#01579b',
+                                    color: '#FFF',
+                                    fontWeight: 'bold'
+                                    
+                                },
+                                
+                                cellStyle: {
+                                    textAlign: "center",
+                                    padding: "7px",
+                                    paddingRight:"80px"
+                                    
+                                },
+                                rowStyle: {
+                                backgroundColor: '#EEE',
+                                textAlign:"center"
+                                }
+                            }}
+                            title="Covid Details : World"
+                            />
+                            
+                                
+                        </div>
 
-            </div>
-         );
+                </div>
+            );
+        }
     }
 }
  
