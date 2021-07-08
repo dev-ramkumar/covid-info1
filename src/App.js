@@ -38,12 +38,12 @@ class App extends Component {
         <BrowserRouter>
         <Switch>
         <Route path="/" component={()=>{
-          return this.state.country==="GLOBAL" ? <Table changeCountry={this.changeCountry}/>: <Country country={this.state.country} />
+          return this.state.country==="GLOBAL" ? <div><Table changeCountry={this.changeCountry}/> <Subscribe /></div>: <div><Country country={this.state.country} /><Subscribe /></div>
         }} exact />
         <Route path="/admin" component={Admin} />
         </Switch>
         </BrowserRouter>
-        <Subscribe />
+        
       </div>
      );
   }

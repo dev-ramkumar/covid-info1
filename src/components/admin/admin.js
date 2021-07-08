@@ -5,7 +5,7 @@ import Login from './login';
 
 class Admin extends Component {
     state = { 
-        showLogin: true,
+        showLogin: 0,
         data:"",
 
         username:"",
@@ -119,7 +119,7 @@ class Admin extends Component {
                         title="Feedback Details"
                         />
                     </div>
-                    
+                    <br/><br/><br/><br/>
                 </div>
              );
         }

@@ -61,9 +61,8 @@ class Subscribe extends Component {
             <div className="subscribe">
                 <center>
                 <span className="feedback-root">
-                    <textarea rows='5' id="feedback-box" placeholder="Enter Your Feedbacks..."></textarea>
-                    
-                    <button onClick={this.feedback}>Send</button>
+                    <span><input  id="feedback-box" placeholder="Enter Your Feedbacks..."/></span>
+                    <span><button onClick={this.feedback}>Send</button></span>
                 </span><br/><br/>
                 <input id="email" type="email" placeholder="example@domain.com"/>
                 <button onClick={this.subscribe}>Subscribe</button>
