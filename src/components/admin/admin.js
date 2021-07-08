@@ -5,7 +5,7 @@ import Login from './login';
 
 class Admin extends Component {
     state = { 
-        showLogin: 0,
+        showLogin: true,
         data:"",
 
         username:"",
