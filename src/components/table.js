@@ -114,8 +114,8 @@ class Table extends Component {
                             
                                 
                         </div>
-                        <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="80%" height="400px"></iframe>
-                        <iframe src="https://public.domo.com/cards/31O7r" width="80%" height="400" marginheight="0" marginwidth="0" frameborder="0"></iframe>
+                        <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="80%" height="400px" marginheight="0" marginwidth="0" frameborder="0" title="total-covid-cases"></iframe>
+                        <iframe src="https://public.domo.com/cards/31O7r" width="80%" height="400" marginheight="0" marginwidth="0" frameborder="0" title="total-vaccinated"></iframe>
 
                 </div>
             );
